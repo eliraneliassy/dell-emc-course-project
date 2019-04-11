@@ -3,13 +3,15 @@
     <div>My shopping cart:</div>
     <div class="item col-md-3 col-sm-6 col-xs-12" 
     *ngFor="let item of cart">
-      <app-item [item]="item"></app-item>
+      <app-item [item]="item" [existInCart]="true"
+      (removeFromCart)="removeFromCart($event)"></app-item>
 
     </div>
 
   </div>
   <div class="row d-flex justify-content-center align-items-center">
     <app-item *ngFor="let itm of items" [item]="itm"
+    [existInCart]="existInCart(itm)"
     (addToCart)="addToCart($event)" (removeFromCart)="removeFromCart($event)"
     class="col-md-3 col-sm-6 col-xs-12"></app-item>
   </div>

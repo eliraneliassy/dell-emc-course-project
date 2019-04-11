@@ -6,12 +6,13 @@
   <div class="image" [ngStyle]="{'background-image': 'url(' + item.imageUrl + ')'}">
   </div>
 
-  <button class="btn btn-primary" (click)="addToCartClicked(item)">Add To
+  <button class="btn btn-primary" 
+  (click)="addToCartClicked()" *ngIf="!existInCart">Add To
     Cart</button>
 
-
-
-  <button class="btn btn-danger" (click)="removeFromCartClicked(item)">Remove From Cart</button>
+  <button class="btn btn-danger" 
+  (click)="removeFromCartClicked()"
+  *ngIf="existInCart">Remove From Cart</button>
 
 
 

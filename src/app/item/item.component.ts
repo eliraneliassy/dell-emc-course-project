@@ -10,6 +10,8 @@ import { Item } from '../item.interface';
 export class ItemComponent implements OnInit {
 
   @Input() item: Item;
+
+  @Input() existInCart: boolean;
   @Output() addToCart: EventEmitter<Item> =
     new EventEmitter<Item>();
 
@@ -20,12 +22,12 @@ export class ItemComponent implements OnInit {
   ngOnInit() {
   }
 
-  addToCartClicked(item) {
-    this.addToCart.emit(item);
+  addToCartClicked() {
+    this.addToCart.emit(this.item);
   }
 
-  removeFromCartClicked(item) {
-    this.removeFromCart.emit(item);
+  removeFromCartClicked() {
+    this.removeFromCart.emit(this.item);
   }
 
 }
