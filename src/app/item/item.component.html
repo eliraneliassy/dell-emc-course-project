@@ -1,0 +1,18 @@
+<div class="item ">
+  <div class="title">
+    {{item.description}}
+  </div>
+  <div class="price">{{item.price / 100}}$</div>
+  <div class="image" [ngStyle]="{'background-image': 'url(' + item.imageUrl + ')'}">
+  </div>
+
+  <button class="btn btn-primary" (click)="addToCartClicked(item)">Add To
+    Cart</button>
+
+
+
+  <button class="btn btn-danger" (click)="removeFromCartClicked(item)">Remove From Cart</button>
+
+
+
+</div>

@@ -1,0 +1,14 @@
+.item {
+    margin-top: 25px;
+  
+    .title {
+        height: 100px;
+        overflow: hidden;
+    }
+    .image {
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: 50% 50%;
+      height: 300px;
+    }
+  }

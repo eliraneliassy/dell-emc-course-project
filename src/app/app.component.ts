@@ -15,12 +15,12 @@ export class AppComponent {
     this.items = db;
   }
 
-  addToCart(item) {
+  addToCart(item: Item) {
     this.cart.push(item);
     console.log(this.cart);
   }
 
-  removeFromCart(item) {
+  removeFromCart(item: Item) {
     const index = this.cart.indexOf(item);
     if (index > -1) {
       this.cart.splice(index, 1);
