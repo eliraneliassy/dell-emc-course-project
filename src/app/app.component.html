@@ -1,13 +1,26 @@
-<div class="item" *ngFor="let item of items">
-  <div class="title">
-    {{item.description}}
-  </div>
-  <div class="price">{{item.price / 100}}$</div>
-  <div class="image" 
-  [ngStyle]="{'background-image': 'url(' + item.imageUrl + ')'}">
+<div class="container row d-flex justify-content-center align-items-center">
+  <div class="item col-md-3 col-sm-6 col-xs-12" *ngFor="let item of items">
+    <div class="title">
+      {{item.description}}
+    </div>
+    <div class="price">{{item.price / 100}}$</div>
+    <div class="image" [ngStyle]="{'background-image': 'url(' + item.imageUrl + ')'}">
+    </div>
+
+    <button class="btn btn-primary" (click)="addToCart(item)" 
+    *ngIf="!existInCart(item); else elseBlock">Add To
+      Cart</button>
+
+      
+    <ng-template #elseBlock>
+      <button class="btn btn-danger" (click)="removeFromCart(item)">Remove From Cart</button>
+    </ng-template>
+
+
   </div>
 
 </div>
+
 
 
 <router-outlet></router-outlet>

@@ -10,8 +10,26 @@ import { db } from './db';
 export class AppComponent {
 
   items: Item[] = [];
+  cart: Item[] = [];
   constructor() {
     this.items = db;
+  }
+
+  addToCart(item) {
+    this.cart.push(item);
+    console.log(this.cart);
+  }
+
+  removeFromCart(item) {
+    const index = this.cart.indexOf(item);
+    if (index > -1) {
+      this.cart.splice(index, 1);
+    }
+    console.log(this.cart);
+  }
+
+  existInCart(item): boolean {
+    return this.cart.indexOf(item) > -1;
   }
 
 }
