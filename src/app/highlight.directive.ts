@@ -1,6 +1,4 @@
-import { element } from 'protractor';
 import { Directive, HostListener, ElementRef, OnInit, Renderer2, Input } from '@angular/core';
-import { MockNgModuleResolver } from '@angular/compiler/testing';
 
 @Directive({
   selector: '[appHighlight]'
@@ -25,6 +23,7 @@ export class HighlightDirective implements OnInit {
   ngOnInit(): void {
     // console.log(this.el);
     this.renderer.setStyle(this.el.nativeElement, 'border', `5px solid ${this.color}`);
+    this.renderer.setStyle(this.el.nativeElement, 'background-color', `red`);
   }
 
 }

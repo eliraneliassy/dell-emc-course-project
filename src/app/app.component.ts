@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { FeedService } from './feed.service';
+import { Component, OnInit } from '@angular/core';
 import { Item } from './item.interface';
 import { db } from './db';
 
@@ -7,12 +8,20 @@ import { db } from './db';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
 
   items: Item[] = [];
   cart: Item[] = [];
-  constructor() {
-    this.items = db;
+  color = 'yellow';
+  constructor(private feedService: FeedService) {
+  }
+
+
+  ngOnInit(): void {
+    this.feedService.getFeed().subscribe((res: Item[]) => {
+      this.items = res;
+    });
   }
 
   addToCart(item: Item) {
