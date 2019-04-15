@@ -21,7 +21,8 @@ export class AppComponent {
   }
 
   removeFromCart(item: Item) {
-    const index = this.cart.indexOf(item);
+    const arr = this.cart.filter(x => x._id === item._id);
+    const index = this.cart.findIndex(x => x._id === item._id);
     if (index > -1) {
       this.cart.splice(index, 1);
     }
@@ -29,7 +30,7 @@ export class AppComponent {
   }
 
   existInCart(item): boolean {
-    return this.cart.indexOf(item) > -1;
+    return this.cart.includes(item);
   }
 
 }
