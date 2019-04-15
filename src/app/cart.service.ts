@@ -7,36 +7,36 @@ import { Item } from './item.interface';
 })
 export class CartService {
 
-  private cart: BehaviorSubject<Item[]> = new BehaviorSubject<Item[]>([]);
+  private cart$: BehaviorSubject<Item[]> = new BehaviorSubject<Item[]>([]);
   constructor() { }
 
   getCart() {
-    return this.cart.asObservable();
+    return this.cart$.asObservable();
   }
 
   addToCart(item: Item) {
-    const newCart = this.cart.getValue();
+    const newCart = this.cart$.getValue();
     newCart.push(item);
 
-    this.cart.next(newCart);
+    this.cart$.next(newCart);
   }
 
   removeFromCart(item: Item) {
-    const newCart = this.cart.getValue();
+    const newCart = this.cart$.getValue();
 
     const index = newCart.findIndex(x => x._id === item._id);
     if (index > -1) {
       newCart.splice(index, 1);
     }
 
-    this.cart.next(newCart);
+    this.cart$.next(newCart);
   }
 
   existInCart(item): boolean {
-    return this.cart.getValue().includes(item);
+    return this.cart$.getValue().includes(item);
   }
 
   countItems() {
-    return this.cart.getValue().length;
+    return this.cart$.getValue().length;
   }
 }
