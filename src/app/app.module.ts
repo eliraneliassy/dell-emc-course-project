@@ -6,12 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ItemComponent } from './item/item.component';
 import { HighlightDirective } from './highlight.directive';
+import { InfiniteScrollDirective } from './infinite-scroll.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     ItemComponent,
-    HighlightDirective
+    HighlightDirective,
+    InfiniteScrollDirective
   ],
   imports: [
     BrowserModule,

@@ -14,6 +14,8 @@ export class AppComponent implements OnInit {
   items: Item[] = [];
   cart: Item[] = [];
   color = 'yellow';
+  page = 0;
+  loading = false;
   constructor(private feedService: FeedService) {
   }
 
@@ -40,6 +42,17 @@ export class AppComponent implements OnInit {
 
   existInCart(item): boolean {
     return this.cart.includes(item);
+  }
+
+  loadMore(event) {
+    if (event) {
+      this.page++;
+      this.loading = true;
+      this.feedService.getFeed(this.page).subscribe((newItems: Item[]) => {
+        this.items = [...this.items, ...newItems];
+        this.loading = false;
+      });
+    }
   }
 
 }
