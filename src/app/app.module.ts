@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { ItemComponent } from './item/item.component';
 import { HighlightDirective } from './highlight.directive';
 import { InfiniteScrollDirective } from './infinite-scroll.directive';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ItemComponent,
     HighlightDirective,
-    InfiniteScrollDirective
+    InfiniteScrollDirective,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

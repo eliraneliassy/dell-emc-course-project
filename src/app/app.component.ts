@@ -1,3 +1,4 @@
+import { CartService } from './cart.service';
 import { FeedService } from './feed.service';
 import { Component, OnInit } from '@angular/core';
 import { Item } from './item.interface';
@@ -16,7 +17,7 @@ export class AppComponent implements OnInit {
   color = 'yellow';
   page = 0;
   loading = false;
-  constructor(private feedService: FeedService) {
+  constructor(private feedService: FeedService, private cartService: CartService) {
   }
 
 
@@ -24,24 +25,21 @@ export class AppComponent implements OnInit {
     this.feedService.getFeed().subscribe((res: Item[]) => {
       this.items = res;
     });
+
+    this.cart = this.cartService.cart;
+
   }
 
   addToCart(item: Item) {
-    this.cart.push(item);
-    console.log(this.cart);
+    this.cartService.addToCart(item);
   }
 
   removeFromCart(item: Item) {
-    const arr = this.cart.filter(x => x._id === item._id);
-    const index = this.cart.findIndex(x => x._id === item._id);
-    if (index > -1) {
-      this.cart.splice(index, 1);
-    }
-    console.log(this.cart);
+    this.cartService.removeFromCart(item);
   }
 
   existInCart(item): boolean {
-    return this.cart.includes(item);
+    return this.cartService.existInCart(item);
   }
 
   loadMore(event) {
