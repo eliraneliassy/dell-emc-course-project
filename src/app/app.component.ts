@@ -3,6 +3,7 @@ import { FeedService } from './feed.service';
 import { Component, OnInit } from '@angular/core';
 import { Item } from './item.interface';
 import { db } from './db';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,9 @@ import { db } from './db';
 })
 export class AppComponent {
 
-
+  constructor(private router: Router) {
+    // this.router.events.subscribe(console.log);
+  }
 
 
 }

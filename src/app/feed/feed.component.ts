@@ -59,7 +59,8 @@ export class FeedComponent implements OnInit {
 
   goToProduct(item: Item) {
     // this.router.navigateByUrl(`/product/${item._id}`);
-    this.router.navigateByUrl('/product/' + item._id);
+    this.router.navigateByUrl('/product/' + item._id + '?name=eliran');
+    this.router.navigate(['/product', item._id], { queryParams: { name: 'eliran' } });
   }
 
 }
