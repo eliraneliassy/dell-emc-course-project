@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Item } from '../item.interface';
 import { FeedService } from '../feed.service';
 import { CartService } from '../cart.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-feed',
@@ -15,7 +16,10 @@ export class FeedComponent implements OnInit {
   color = 'yellow';
   page = 0;
   loading = false;
-  constructor(private feedService: FeedService, private cartService: CartService) {
+  constructor(
+    private feedService: FeedService,
+    private cartService: CartService,
+    private router: Router) {
   }
 
 
@@ -51,6 +55,11 @@ export class FeedComponent implements OnInit {
         this.loading = false;
       });
     }
+  }
+
+  goToProduct(item: Item) {
+    // this.router.navigateByUrl(`/product/${item._id}`);
+    this.router.navigateByUrl('/product/' + item._id);
   }
 
 }

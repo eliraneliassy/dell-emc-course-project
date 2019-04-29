@@ -4,6 +4,7 @@ import { Subject, of } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map, switchMap } from 'rxjs/operators';
 import { SuggestionsService, Suggestion } from '../suggestions.service';
 import { Item } from '../item.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -19,7 +20,8 @@ export class HeaderComponent implements OnInit {
   searchTerm$: Subject<string> = new Subject<string>();
   constructor(
     private cartService: CartService,
-    private suggestion: SuggestionsService) { }
+    private suggestion: SuggestionsService,
+    private router: Router) { }
 
   ngOnInit() {
     this.cartService.getCart().subscribe(() =>
@@ -36,6 +38,11 @@ export class HeaderComponent implements OnInit {
 
   search(term: string) {
     this.searchTerm$.next(term);
+  }
+
+  numClicked() {
+    console.log('from num clicked');
+    this.router.navigateByUrl('/cart');
   }
 
 }

@@ -10,6 +10,7 @@ import { InfiniteScrollDirective } from './infinite-scroll.directive';
 import { HeaderComponent } from './header/header.component';
 import { CartComponent } from './cart/cart.component';
 import { FeedComponent } from './feed/feed.component';
+import { ProductPageComponent } from './product-page/product-page.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FeedComponent } from './feed/feed.component';
     InfiniteScrollDirective,
     HeaderComponent,
     CartComponent,
-    FeedComponent
+    FeedComponent,
+    ProductPageComponent
   ],
   imports: [
     BrowserModule,

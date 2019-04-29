@@ -6,7 +6,7 @@
   <input (input)="search($event.target.value)">
   <nav class="my-2 my-md-0 mr-md-3">
     <a class="p-2 text-dark" routerLink="/cart">My Shopping Cart</a>
-    <a class="p-2 text-dark" href="#">Num of item in cart: {{num}}</a>
+    <a class="p-2 text-dark" (click)="numClicked()">Num of item in cart: {{num}}</a>
   </nav>
 </div>
 

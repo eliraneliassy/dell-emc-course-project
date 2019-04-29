@@ -2,7 +2,8 @@
 (bottomReached)="loadMore($event)"
 [isLoading]="loading">
 <app-item *ngFor="let itm of items" [item]="itm" [existInCart]="existInCart(itm)" (addToCart)="addToCart($event)"
-  (removeFromCart)="removeFromCart($event)" class="col-md-3 col-sm-6 col-xs-12" appHighlight></app-item>
+  (removeFromCart)="removeFromCart($event)" class="col-md-3 col-sm-6 col-xs-12" appHighlight
+  (click)="goToProduct(itm)"></app-item>
 
 <div class="loader" *ngIf="loading">Loading....</div>
 </div>
