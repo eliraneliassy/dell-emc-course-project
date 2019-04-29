@@ -32,8 +32,8 @@ export class CartService {
     this.cart$.next(newCart);
   }
 
-  existInCart(item): boolean {
-    return this.cart$.getValue().includes(item);
+  existInCart(item: Item): boolean {
+    return this.cart$.getValue().some((x) => x._id === item._id);
   }
 
   countItems() {
