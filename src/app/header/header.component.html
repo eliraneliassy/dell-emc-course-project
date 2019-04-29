@@ -5,13 +5,19 @@
     </a></h5>
   <input (input)="search($event.target.value)">
   <nav class="my-2 my-md-0 mr-md-3">
-    <a class="p-2 text-dark" routerLink="/" routerLinkActive="active">Home</a>
+    <a class="p-2 text-dark" routerLink="/feed" routerLinkActive="active">Home</a>
     <a class="p-2 text-dark" routerLink="/cart" routerLinkActive="active">My Shopping Cart</a>
     <a class="p-2 text-dark" (click)="numClicked()">Num of item in cart: {{num}}</a>
   </nav>
-
-  <a class="btn btn-outline-primary" routerLink="/login">Login</a>
-  <a class="btn btn-outline-primary" routerLink="/register">Register</a>
+  <div *ngIf="!isAuth">
+    <a class="btn btn-outline-primary" routerLink="/">Login</a>
+    <a class="btn btn-outline-primary" routerLink="/register">Register</a>
+    
+  </div>
+  <div *ngIf="isAuth">
+      <span>Hello, {{ user$ | async}}</span>
+      <a class="btn btn-outline-primary" (click)="logout()">Logout</a>
+    </div>
 </div>
 
 <div *ngFor="let item of itemsSearchResult">

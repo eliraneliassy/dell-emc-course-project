@@ -1,6 +1,7 @@
+import { AuthService } from './../auth.service';
 import { CartService } from './../cart.service';
 import { Component, OnInit } from '@angular/core';
-import { Subject, of } from 'rxjs';
+import { Subject, of, Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map, switchMap } from 'rxjs/operators';
 import { SuggestionsService, Suggestion } from '../suggestions.service';
 import { Item } from '../item.interface';
@@ -18,12 +19,22 @@ export class HeaderComponent implements OnInit {
   itemsSearchResult: Item[];
 
   searchTerm$: Subject<string> = new Subject<string>();
+  isAuth: boolean;
+
+  user$: Observable<string>;
   constructor(
     private cartService: CartService,
     private suggestion: SuggestionsService,
-    private router: Router) { }
+    private router: Router,
+    private authService: AuthService) { }
 
   ngOnInit() {
+
+    this.authService.isAuth().subscribe(
+      (isauth: boolean) => this.isAuth = isauth
+    );
+
+    this.user$ = this.authService.getUser();
     this.cartService.getCart().subscribe(() =>
       this.num = this.cartService.countItems());
 
@@ -41,8 +52,11 @@ export class HeaderComponent implements OnInit {
   }
 
   numClicked() {
-    console.log('from num clicked');
     this.router.navigateByUrl('/cart');
+  }
+
+  logout() {
+    this.authService.logout();
   }
 
 }

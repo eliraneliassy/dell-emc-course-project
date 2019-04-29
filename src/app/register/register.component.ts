@@ -24,7 +24,7 @@ export class RegisterComponent implements OnInit {
     };
     this.form.patchValue(obj);
 
-    this.form.controls['userName'].valueChanges.subscribe(console.log);
+    this.form.controls.userName.valueChanges.subscribe(console.log);
 
   }
 

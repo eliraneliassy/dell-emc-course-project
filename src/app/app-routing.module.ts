@@ -1,3 +1,4 @@
+import { AuthGuard } from './auth.guard';
 import { LoginComponent } from './login/login.component';
 import { CartComponent } from './cart/cart.component';
 import { FeedComponent } from './feed/feed.component';
@@ -7,11 +8,16 @@ import { ProductPageComponent } from './product-page/product-page.component';
 import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
-  { path: '', component: FeedComponent },
-  { path: 'cart', component: CartComponent },
-  { path: 'product/:id', component: ProductPageComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent }
+  { path: '', component: LoginComponent },
+  {
+    path: '', canActivateChild: [AuthGuard], children: [
+      { path: 'feed', component: FeedComponent, canActivate: [AuthGuard] },
+      { path: 'cart', component: CartComponent },
+      { path: 'product/:id', component: ProductPageComponent },
+      { path: 'register', component: RegisterComponent }
+    ]
+  }
+
 ];
 
 @NgModule({
