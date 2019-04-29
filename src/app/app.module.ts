@@ -8,6 +8,8 @@ import { ItemComponent } from './item/item.component';
 import { HighlightDirective } from './highlight.directive';
 import { InfiniteScrollDirective } from './infinite-scroll.directive';
 import { HeaderComponent } from './header/header.component';
+import { CartComponent } from './cart/cart.component';
+import { FeedComponent } from './feed/feed.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { HeaderComponent } from './header/header.component';
     ItemComponent,
     HighlightDirective,
     InfiniteScrollDirective,
-    HeaderComponent
+    HeaderComponent,
+    CartComponent,
+    FeedComponent
   ],
   imports: [
     BrowserModule,

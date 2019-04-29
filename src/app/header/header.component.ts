@@ -1,6 +1,6 @@
 import { CartService } from './../cart.service';
 import { Component, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, of } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map, switchMap } from 'rxjs/operators';
 import { SuggestionsService, Suggestion } from '../suggestions.service';
 import { Item } from '../item.interface';
@@ -25,14 +25,13 @@ export class HeaderComponent implements OnInit {
     this.cartService.getCart().subscribe(() =>
       this.num = this.cartService.countItems());
 
-    this.searchTerm$.pipe(
-      debounceTime(300),
-      distinctUntilChanged(),
-      switchMap((term: string) => this.suggestion.getSuggestions(term))
-    ).pipe(
-      map((x: Suggestion) => x.items)
-    ).subscribe((items) => this.itemsSearchResult = items);
-
+    this.searchTerm$
+      .pipe(
+        debounceTime(300),
+        distinctUntilChanged(),
+        switchMap((term: string) => this.suggestion.getSuggestions(term)),
+        map((res: Suggestion) => res.items))
+      .subscribe(console.log);
   }
 
   search(term: string) {

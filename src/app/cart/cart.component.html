@@ -1,0 +1,9 @@
+
+<div class="shopping-cart">
+  <div>My shopping cart:</div>
+  <div class="item col-md-3 col-sm-6 col-xs-12" *ngFor="let item of cart">
+    <app-item [item]="item" [existInCart]="true" (removeFromCart)="removeFromCart($event)" ></app-item>
+
+  </div>
+
+</div>
