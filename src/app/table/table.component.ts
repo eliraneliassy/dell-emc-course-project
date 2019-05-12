@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { MatSort } from '@angular/material/sort';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 
 export interface PeriodicElement {
@@ -28,19 +29,36 @@ const ELEMENT_DATA: PeriodicElement[] = [
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
-export class TableComponent implements OnInit {
-
+export class TableComponent implements OnInit, AfterViewInit {
+  
   dataSource: MatTableDataSource<PeriodicElement>;
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild('input') input: ElementRef;
   constructor() { }
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource(ELEMENT_DATA);
+    this.dataSource.sort = this.sort;
   }
 
   addRow() {
     const row = { position: 11, name: 'Carmel', weight: 15.1797, symbol: 'Cl' };
     this.dataSource = new MatTableDataSource([...ELEMENT_DATA, row]);
+    this.dataSource.sort = this.sort;
+  }
+
+  sortData(event) {
+    console.log(event);
+  }
+
+  filter(term: string) {
+    this.dataSource.filter = term.trim().toLocaleLowerCase();
+  }
+
+  ngAfterViewInit(): void {
+    console.log(this.input);
   }
 
 }

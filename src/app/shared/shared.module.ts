@@ -1,3 +1,4 @@
+import { MatSortModule } from '@angular/material/sort';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ItemComponent } from './item/item.component';
@@ -21,14 +22,17 @@ export const componentsNdirectives = [
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatTableModule],
+    MatTableModule,
+    MatSortModule
+  ],
   imports: [
     CommonModule,
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
     MatDialogModule,
-    MatTableModule
+    MatTableModule,
+    MatSortModule
 
   ]
 })
