@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-feedback',
@@ -9,10 +9,18 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class FeedbackComponent implements OnInit {
 
   helloMsg: string;
-  constructor(@Inject(MAT_DIALOG_DATA) private data: { [key: string]: string }) { }
+
+  ans: string;
+  constructor(
+    @Inject(MAT_DIALOG_DATA) private data: { [key: string]: string },
+    private dialogRef: MatDialogRef<FeedbackComponent>) { }
 
   ngOnInit() {
     this.helloMsg = this.data.hello;
+  }
+
+  send() {
+    this.dialogRef.close(this.ans);
   }
 
 }

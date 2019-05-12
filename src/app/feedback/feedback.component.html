@@ -1,3 +1,13 @@
-<p>
+<p mat-dialog-header>
   {{helloMsg}}
 </p>
+
+<div mat-dialog-content>
+  <p>Please give us feeback, what do you think about our website?</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="ans">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="send()">Send</button>
+</div>

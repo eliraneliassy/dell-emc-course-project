@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
       width: '400px',
       height: '400px',
       data: { hello: 'Hello from login component' }
-    });
+    }).afterClosed().subscribe((res) => console.log(res));
   }
 
 }
