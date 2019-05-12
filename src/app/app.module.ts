@@ -12,6 +12,7 @@ import { RegisterComponent } from './register/register.component';
 import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FeedbackComponent } from './feedback/feedback.component';
+import { TableComponent } from './table/table.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FeedbackComponent } from './feedback/feedback.component';
     CartComponent,
     LoginComponent,
     RegisterComponent,
-    FeedbackComponent
+    FeedbackComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,

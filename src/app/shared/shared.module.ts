@@ -7,6 +7,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table';
+
 
 export const componentsNdirectives = [
   ItemComponent,
@@ -15,14 +17,18 @@ export const componentsNdirectives = [
 
 @NgModule({
   declarations: [...componentsNdirectives],
-  exports: [...componentsNdirectives, MatFormFieldModule, MatInputModule,
-    MatButtonModule],
+  exports: [...componentsNdirectives,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatTableModule],
   imports: [
     CommonModule,
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTableModule
 
   ]
 })
