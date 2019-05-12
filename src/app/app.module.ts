@@ -5,26 +5,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ItemComponent } from './item/item.component';
-import { HighlightDirective } from './highlight.directive';
-import { InfiniteScrollDirective } from './infinite-scroll.directive';
 import { HeaderComponent } from './header/header.component';
 import { CartComponent } from './cart/cart.component';
-import { FeedComponent } from './feed/feed.component';
-import { ProductPageComponent } from './product-page/product-page.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ItemComponent,
-    HighlightDirective,
-    InfiniteScrollDirective,
     HeaderComponent,
     CartComponent,
-    FeedComponent,
-    ProductPageComponent,
     LoginComponent,
     RegisterComponent
   ],
@@ -33,7 +24,8 @@ import { RegisterComponent } from './register/register.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

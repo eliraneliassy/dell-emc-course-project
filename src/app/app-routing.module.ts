@@ -3,17 +3,15 @@ import { LoginComponent } from './login/login.component';
 import { CartComponent } from './cart/cart.component';
 import { FeedComponent } from './feed/feed.component';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { ProductPageComponent } from './product-page/product-page.component';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
+  { path: 'feed', loadChildren: './feed/feed.module#FeedModule' },
   {
     path: '', canActivateChild: [AuthGuard], children: [
-      { path: 'feed', component: FeedComponent, canActivate: [AuthGuard] },
       { path: 'cart', component: CartComponent },
-      { path: 'product/:id', component: ProductPageComponent },
       { path: 'register', component: RegisterComponent }
     ]
   }
@@ -21,7 +19,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

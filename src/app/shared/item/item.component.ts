@@ -1,5 +1,9 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy, SimpleChanges } from '@angular/core';
-import { Item } from '../item.interface';
+import {
+  Component, OnInit, Input, Output, EventEmitter,
+  OnChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy, SimpleChanges
+} from '@angular/core';
+import { Item } from 'src/app/item.interface';
+
 
 
 @Component({
