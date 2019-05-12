@@ -1,6 +1,8 @@
+import { FeedbackComponent } from './../feedback/feedback.component';
 import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-login',
@@ -9,12 +11,22 @@ import { NgForm } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(
+    private authService: AuthService,
+    private dialog: MatDialog) { }
 
   ngOnInit() {
   }
   submit(form: NgForm) {
     this.authService.setUser(form.value.email);
+  }
+
+  openDialog() {
+    this.dialog.open(FeedbackComponent, {
+      width: '400px',
+      height: '400px',
+      data: { hello: 'Hello from login component' }
+    });
   }
 
 }
