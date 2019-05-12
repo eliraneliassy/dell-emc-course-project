@@ -1,7 +1,7 @@
 <form class="form-signin" #form="ngForm" (ngSubmit)="submit(form)">
   <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-  
-  <label for="inputEmail" class="sr-only">Email address</label>
+
+  <!-- <label for="inputEmail" class="sr-only">Email address</label>
   <input type="email" class="form-control" placeholder="Email address" 
   ngModel name="email" required email #inputemail="ngModel">
   <small class="error"
@@ -11,9 +11,20 @@
   
   <label for="inputPassword" class="sr-only">Password</label>
   <input type="password" class="form-control" placeholder="Password" ngModel
-  name="password" required   >
-  
-  <button class="btn btn-lg btn-primary btn-block" type="submit"
-  [disabled]="!form.valid">Sign in</button>
-  
+  name="password" required   > -->
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Email" ngModel name="email" required email #inputemail="ngModel">
+    <mat-hint>Errors appear instantly!</mat-hint>
+    <mat-error *ngIf="inputemail.invalid && inputemail.touched && inputemail.hasError('required')">
+      Email is <strong>required</strong>
+
+    </mat-error>
+    <mat-error *ngIf="inputemail.invalid && inputemail.touched && inputemail.hasError('email')">
+      Please enter a valid email address
+    </mat-error>
+  </mat-form-field>
+
+  <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="!form.valid">Sign in</button>
+
 </form>
