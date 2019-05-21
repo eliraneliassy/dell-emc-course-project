@@ -1,8 +1,11 @@
-import { AuthService } from './auth.service';
+
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router, CanActivateChild } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { State } from './store/app.reducer';
+import { Store } from '@ngrx/store';
+import { getIsAuth } from './store/app.selectors';
 
 @Injectable({
   providedIn: 'root'
@@ -10,13 +13,13 @@ import { switchMap } from 'rxjs/operators';
 export class AuthGuard implements CanActivate, CanActivateChild {
 
   constructor(
-    private authService: AuthService,
+    private store: Store<State>,
     private router: Router) { }
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot)
     : Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return this.authService.isAuth().pipe(
+    return this.store.select(getIsAuth).pipe(
       switchMap((isAuth: boolean) => {
         if (isAuth) {
           return of(true);

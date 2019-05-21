@@ -1,4 +1,3 @@
-import { AuthService } from './../auth.service';
 import { CartService } from './../cart.service';
 import { Component, OnInit } from '@angular/core';
 import { Subject, of, Observable } from 'rxjs';

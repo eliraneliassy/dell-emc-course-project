@@ -1,6 +1,5 @@
 import { UserLogin, UserLoginSuccess } from './../store/app.actions';
 import { FeedbackComponent } from './../feedback/feedback.component';
-import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -14,7 +13,6 @@ import { Store } from '@ngrx/store';
 export class LoginComponent implements OnInit {
 
   constructor(
-    private authService: AuthService,
     private dialog: MatDialog,
     private store: Store<any>) { }
 
