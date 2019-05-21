@@ -1,4 +1,4 @@
-import { UserLogin } from './../store/app.actions';
+import { UserLogin, UserLoginSuccess } from './../store/app.actions';
 import { FeedbackComponent } from './../feedback/feedback.component';
 import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
@@ -23,7 +23,8 @@ export class LoginComponent implements OnInit {
   }
   submit(form: NgForm) {
     // this.authService.setUser(form.value.email);
-    this.store.dispatch(new UserLogin());
+    // this.store.dispatch(new UserLogin());
+    this.store.dispatch(new UserLoginSuccess(form.value.email));
   }
 
   openDialog() {

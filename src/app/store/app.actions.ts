@@ -3,6 +3,7 @@ import { Action } from '@ngrx/store';
 export enum AppActionTypes {
   UserLogin = '[App] User Login',
   UserLoginSuccess = '[App] User Login Success',
+  UserLogout = '[App] User Logout'
 
 }
 
@@ -15,5 +16,10 @@ export class UserLoginSuccess implements Action {
   constructor(public payload: string) { }
 }
 
+export class UserLogout implements Action {
+  readonly type = AppActionTypes.UserLogout;
 
-export type AppActions = UserLogin | UserLoginSuccess;
+}
+
+
+export type AppActions = UserLogin | UserLoginSuccess | UserLogout;

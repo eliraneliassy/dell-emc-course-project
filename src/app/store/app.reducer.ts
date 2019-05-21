@@ -20,6 +20,9 @@ export function reducer(state = initialState, action: AppActions): State {
     case (AppActionTypes.UserLoginSuccess): {
       return { ...state, loading: false, userName: action.payload };
     }
+    case (AppActionTypes.UserLogout): {
+      return { ...state, userName: null };
+    }
     default:
       return state;
   }

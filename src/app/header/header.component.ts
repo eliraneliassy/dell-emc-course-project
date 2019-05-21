@@ -6,6 +6,10 @@ import { debounceTime, distinctUntilChanged, map, switchMap } from 'rxjs/operato
 import { SuggestionsService, Suggestion } from '../suggestions.service';
 import { Item } from '../item.interface';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { State } from '../store/app.reducer';
+import { getIsAuth, getUserName } from '../store/app.selectors';
+import { UserLogout } from '../store/app.actions';
 
 @Component({
   selector: 'app-header',
@@ -26,15 +30,22 @@ export class HeaderComponent implements OnInit {
     private cartService: CartService,
     private suggestion: SuggestionsService,
     private router: Router,
-    private authService: AuthService) { }
+    private store: Store<State>) { }
 
   ngOnInit() {
+    // this.authService.isAuth().subscribe(
+    //   (isauth: boolean) => this.isAuth = isauth
+    // );
 
-    this.authService.isAuth().subscribe(
-      (isauth: boolean) => this.isAuth = isauth
-    );
+    this.store.select(getIsAuth).subscribe((isAuth) => {
+      this.isAuth = isAuth;
+    });
 
-    this.user$ = this.authService.getUser();
+
+    // this.user$ = this.authService.getUser();
+
+    this.user$ = this.store.select(getUserName);
+
     this.cartService.getCart().subscribe(() =>
       this.num = this.cartService.countItems());
 
@@ -56,7 +67,8 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    this.authService.logout();
+    // this.authService.logout();
+    this.store.dispatch(new UserLogout());
   }
 
 }
