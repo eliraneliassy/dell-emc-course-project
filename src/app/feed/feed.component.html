@@ -1,6 +1,7 @@
 <div class="row d-flex justify-content-center align-items-center" appInfiniteScroll 
 (bottomReached)="loadMore($event)"
 [isLoading]="loading">
+<div *ngIf="load$ | async">Loading....</div>
 <app-item *ngFor="let itm of items" [item]="itm" [existInCart]="existInCart(itm)" (addToCart)="addToCart($event)"
   (removeFromCart)="removeFromCart($event)" class="col-md-3 col-sm-6 col-xs-12" appHighlight
   (click)="goToProduct(itm)"></app-item>
