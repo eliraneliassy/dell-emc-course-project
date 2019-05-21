@@ -1,8 +1,10 @@
+import { UserLogin } from './../store/app.actions';
 import { FeedbackComponent } from './../feedback/feedback.component';
 import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-login',
@@ -13,12 +15,15 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private dialog: MatDialog) { }
+    private dialog: MatDialog,
+    private store: Store<any>) { }
 
   ngOnInit() {
+    this.store.subscribe(console.log);
   }
   submit(form: NgForm) {
-    this.authService.setUser(form.value.email);
+    // this.authService.setUser(form.value.email);
+    this.store.dispatch(new UserLogin());
   }
 
   openDialog() {
